@@ -1,0 +1,36 @@
+<html>
+<head><title>Home</title></head>
+<body onload="showContent();">
+
+	<div class="row">
+		Upload Audio: 
+		1. Audio: <input type="file" name="audio_name">
+		2. name: <input type="text" name="song">
+		<button onclick="uploadAudio()">Upload</button>
+	</div>
+
+	<div class="row">
+		Upload image: 
+		1. image: <input type="file" name="pic_name">
+		2. name: <input type="text" name="image">
+		<button onclick="uploadImage()">Upload</button>
+	</div>
+
+	<div class="row">
+		Upload Profile: 
+		1. profile: <input type="file" name="avatar">
+		<button onclick="uploadProfile()">Upload</button>
+	</div>
+
+	<div id="conents" class="row">
+		<div id="profile1_"></div>
+		<div id="images1_"></div>
+		<div id="audio1_"></div>
+	</div>
+
+
+
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/app.js"></script>
+	</body>
+</html>
