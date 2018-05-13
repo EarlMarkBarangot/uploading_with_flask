@@ -1,36 +1,109 @@
-<html>
-<head><title>Home</title></head>
-<body onload="showContent();">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/signin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+    
+<body onload="showContent();">
+	<div class="container">
+		<div id="profile1_"></div>
+		<div class="row">
+			<button class="btn btn-lg btn-primary btn-block" onclick="logout();">Logout</button>
+		</div>
+	</div>
+<div class="container">
 	<div class="row">
+
+	 <div class="form-signin col-lg-6">
+        <h2 class="form-signin-heading">Upload Audio</h2>
+       	<label for="song" class="sr-only">Audio Name</label>
+       	<input type="text" name="song" id="song" placeholder="Audio Name">
+
+       	<label for="audio_name" class="sr-only">Audio File</label>
+       	<input type="file" name="audio_name" id="audio_name">
+
+        <button class="btn btn-lg btn-primary btn-block" onclick="uploadAudio()">Upload</button>
+	</div>
+
+	<!--<div class="row">
 		Upload Audio: 
 		1. Audio: <input type="file" name="audio_name">
 		2. name: <input type="text" name="song">
-		<button onclick="uploadAudio()">Upload</button>
+		<button class="btn btn-lg btn-primary btn-block" onclick="uploadAudio()">Upload</button>
+	</div>-->
+
+	<div class="form-signin col-lg-6">
+        <h2 class="form-signin-heading">Upload Image</h2>
+       	<label for="image" class="sr-only">Image Name</label>
+       	<input type="text" name="image" id="image" placeholder="Image Name">
+
+       	<label for="pic_name" class="sr-only">Image File</label>
+       	<input type="file" name="pic_name" id="pic_name">
+
+        <button class="btn btn-lg btn-primary btn-block" onclick="uploadImage()">Upload</button>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		Upload image: 
 		1. image: <input type="file" name="pic_name">
 		2. name: <input type="text" name="image">
-		<button onclick="uploadImage()">Upload</button>
+		<button class="btn btn-lg btn-primary btn-block" onclick="uploadImage()">Upload</button>
+	</div>-->
+
+	<div class="form-signin col-lg-6">
+        <h2 class="form-signin-heading">Upload Profile</h2>
+
+       	<label for="avatar" class="sr-only">Image File</label>
+       	<input type="file" name="avatar" id="avatar">
+
+        <button class="btn btn-lg btn-primary btn-block" onclick="uploadProfile()">Upload</button>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		Upload Profile: 
 		1. profile: <input type="file" name="avatar">
-		<button onclick="uploadProfile()">Upload</button>
-	</div>
+		<button class="btn btn-lg btn-primary btn-block" onclick="uploadProfile()">Upload</button>
+	</div>-->
+   </div>
 
-	<div id="conents" class="row">
-		<div id="profile1_"></div>
-		<div id="images1_"></div>
-		<div id="audio1_"></div>
+	<div id="conents" class="container">
+		<div class="row"> 
+			<h2 class="form-signin-heading">Exchangagram Moments</h2>
+			<div id="images1_" style="display: inline-block;"></div>
+		</div>
+		
+		<div class="row">	
+			<h2 class="form-signin-heading">Beats of your Life</h2>	
+			<div id="audio1_"></div>
+		</div>
 	</div>
 
 
 
 		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/static/js/app.js"></script>
+</div>
 	</body>
 </html>

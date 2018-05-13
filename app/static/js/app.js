@@ -147,15 +147,15 @@ function profiler(prof, name){
 }
 
 function image_sign(prof, name){
-    return '<p id="hjhjh">'+name+'</p>'+
-        '<img src="'+prof+'"style="width: 150px; height:150px; border-radius: 50%;">';
+    //'<p id="hjhjh">'+name+'</p>'+
+    return '<img src="'+prof+'"style="width: 150px; height:150px; border-radius: 50%;">&nbsp;';
 }
 
 function audio_sign(prof, name){
-    return '<div> <p>'+name+'</p>'+
-    '<audio controls>'+
+    //'<div> <p>'+name+'</p>'+
+    return '<audio controls>'+
             '<source src="'+prof+'" type="audio/mpeg">'+
-            '</audio></div>';
+            '</audio></div> &nbsp;';
 }
 
 function showContent(){
