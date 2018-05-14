@@ -1,0 +1,17 @@
+Flask==0.11.1
+Flask_Bootstrap==3.3.7.1
+itsdangerous==0.24
+Flask_SQLAlchemy==2.0
+Flask_Script==2.0.5
+SQLAlchemy_Utils==0.32.14
+Flask_Login==0.3.2
+SQLAlchemy==0.9.7
+Werkzeug==0.11.11
+Flask_Compress==1.4.0
+psycopg2==2.7.1
+Flask_Cors==3.0.3
+oauth2client==4.1.2
+httplib2==0.10.3
+apiclient
+google_api_python_client==1.6.7
+

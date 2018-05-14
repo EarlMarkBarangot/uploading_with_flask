@@ -3,6 +3,7 @@ from werkzeug import secure_filename
 img_folder = 'app/static/js/uploads/img/'
 audio_folder = 'app/static/js/uploads/audio/'
 profile_folder = 'app/static/js/uploads/profile/'
+app_dump = 'app/dumps'
 
 
 available_extension = set(['png', 'jpg', 'PNG', 'JPG'])

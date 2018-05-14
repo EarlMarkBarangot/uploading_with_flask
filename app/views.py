@@ -31,3 +31,9 @@ def register():
 @login_required
 def home():
 	return render_template('home.html')
+
+@app.route('/home2')
+@app.route('/home2/')
+@login_required
+def home2():
+	return render_template('home2.html')
