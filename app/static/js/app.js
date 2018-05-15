@@ -1,4 +1,19 @@
+var myVar;
+
+function myFunction() {
+    document.getElementById("loader").style.display = "block";
+    console.log('hlllo')
+    myVar = setTimeout(showPage, 10000);
+}
+
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+    console.log('done')
+}
+
+
 function uploadImage(){
+    myFunction();
 	var form = new FormData();
     form.append('name', $('input[name="image"]').val());
     form.append('image', $('input[name="pic_name"]')[0].files[0]);
@@ -26,6 +41,7 @@ function uploadImage(){
 }
 
 function uploadImage2(){
+    myFunction();
     var form = new FormData();
     form.append('name', $('input[name="image"]').val());
     form.append('image', $('input[name="pic_name"]')[0].files[0]);
@@ -53,6 +69,7 @@ function uploadImage2(){
 }
 
 function uploadAudio(){
+    myFunction();
     var form = new FormData();
     form.append('name', $('input[name="song"]').val());
     form.append('song', $('input[name="audio_name"]')[0].files[0]);
@@ -80,6 +97,7 @@ function uploadAudio(){
 }
 
 function uploadAudio2(){
+    myFunction();
     var form = new FormData();
     form.append('name', $('input[name="song"]').val());
     form.append('song', $('input[name="audio_name"]')[0].files[0]);
@@ -107,6 +125,7 @@ function uploadAudio2(){
 }
 
 function uploadProfile(){
+    myFunction();
     var form = new FormData();
     form.append('avatar', $('input[name="avatar"]')[0].files[0]);
 
@@ -133,6 +152,7 @@ function uploadProfile(){
 }
 
 function uploadProfile2(){
+    myFunction();
     var form = new FormData();
     form.append('avatar', $('input[name="avatar"]')[0].files[0]);
 
@@ -267,6 +287,7 @@ function audio_sign2(prof, name){
 
 
 function showContent(){
+    document.getElementById("loader").style.display = "none";
     $.ajax({
         url: 'http://127.0.0.1:5000/api/user/data',
         data: {'exit_code': '0'},
@@ -303,6 +324,7 @@ function showContent(){
 }
 
 function showContent2(){
+    document.getElementById("loader").style.display = "none";
     $.ajax({
         url: 'http://127.0.0.1:5000/api/user/data',
         data: {'exit_code': '0'},
