@@ -70,7 +70,7 @@ function uploadImage3(){
     $.ajax({
             type: 'POST',
             url: '/api/v3/upload/image',
-            data: formCreate($('input[name="image"]').val(), 'local', 'image', $('input[name="pic_name"]')[0].files[0]),
+            data: formCreate($('input[name="image"]').val(), 'cloudinary', 'image', $('input[name="pic_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -147,7 +147,7 @@ function uploadAudio3(){
     $.ajax({
             type: 'POST',
             url: '/api/v3/upload/audio',
-            data: formCreate($('input[name="song"]').val(), 'gdrive', 'song', $('input[name="audio_name"]')[0].files[0]),
+            data: formCreate($('input[name="song"]').val(), 'cloudinary', 'song', $('input[name="audio_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -223,7 +223,7 @@ function uploadProfile3(){
     $.ajax({
             type: 'POST',
             url: '/api/v3/profilepic',
-            data: formCreate("0", 'gdrive', 'avatar', $('input[name="avatar"]')[0].files[0]),
+            data: formCreate("0", 'cloudinary', 'avatar', $('input[name="avatar"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,

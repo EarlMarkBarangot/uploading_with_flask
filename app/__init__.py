@@ -16,6 +16,6 @@ db.create_all()
 
 models.Type.uploader_types()
 
-from app import views, api, api2
+from app import views, api, api2, api3
 
 app.debug = True

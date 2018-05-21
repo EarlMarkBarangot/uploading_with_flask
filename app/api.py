@@ -69,7 +69,7 @@ def load():
 	if current_user.is_active():
 		profile = Profile.query.filter(and_(and_(Profile.userid==current_user.id, Profile.status==1),Profile.typeID==int(request.args.get('type')))).first()
 		audio = Audio.query.filter(and_(Audio.userid==current_user.id, Audio.typeID==int(request.args.get('type')))).all()
-		image = Images.query.filter(and_(Images.userid==current_user.id, Audio.typeID==int(request.args.get('type')))).all()
+		image = Images.query.filter(and_(Images.userid==current_user.id, Images.typeID==int(request.args.get('type')))).all()
 
 		#audio
 		audio__ = []
