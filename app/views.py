@@ -37,3 +37,9 @@ def home():
 @login_required
 def home2():
 	return render_template('home2.html')
+
+@app.route('/home3')
+@app.route('/home3/')
+@login_required
+def home3():
+	return render_template('home3.html')

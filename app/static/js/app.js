@@ -19,7 +19,7 @@ function formCreate(nameVal, typeVal, filetype, fileVal){
     return form;
 }
 
-
+///////////////////////// upload image //////////////////////////////////////////////////////////////////////////////////
 function uploadImage(){
     $.ajax({
     		type: 'POST',
@@ -65,6 +65,37 @@ function uploadImage2(){
     });
 
 }
+
+function uploadImage3(){
+    $.ajax({
+            type: 'POST',
+            url: '/api/v3/upload/image',
+            data: formCreate($('input[name="image"]').val(), 'local', 'image', $('input[name="pic_name"]')[0].files[0]),
+            cache: false,
+            contentType: false,
+            processData: false,
+            async: false,
+            success: function(response) {
+                if(response.msg=='ok'){
+                    console.log('Welcome Home im')
+                    window.location.assign(response.next_node);
+                }
+                else{
+                    console.log(response.msg);
+                    alert(response.msg);
+                }
+            },
+    });
+
+}
+
+
+
+
+
+
+
+////////////////////////// upload auio ////////////////////////////////////////////////////////////////////////////////
 
 function uploadAudio(){
     $.ajax({
@@ -112,6 +143,36 @@ function uploadAudio2(){
 
 }
 
+function uploadAudio3(){
+    $.ajax({
+            type: 'POST',
+            url: '/api/v3/upload/audio',
+            data: formCreate($('input[name="song"]').val(), 'gdrive', 'song', $('input[name="audio_name"]')[0].files[0]),
+            cache: false,
+            contentType: false,
+            processData: false,
+            async: false,
+            success: function(response) {
+                if(response.msg=='ok'){
+                    console.log('Welcome Home au')
+                    window.location.assign(response.next_node);
+                }
+                else{
+                    console.log(response.msg);
+                    alert(response.msg);
+                }
+            },
+    });
+
+}
+
+
+
+
+
+
+///////////////////////// upload profile ///////////////////////////////////////////////////////////////////
+
 function uploadProfile(){
     $.ajax({
             type: 'POST',
@@ -157,6 +218,31 @@ function uploadProfile2(){
     });
 
 }
+
+function uploadProfile3(){
+    $.ajax({
+            type: 'POST',
+            url: '/api/v3/profilepic',
+            data: formCreate("0", 'gdrive', 'avatar', $('input[name="avatar"]')[0].files[0]),
+            cache: false,
+            contentType: false,
+            processData: false,
+            async: false,
+            success: function(response) {
+                if(response.msg=='ok'){
+                    console.log('Welcome Home up')
+                    window.location.assign(response.next_node);
+                }
+                else{
+                    console.log(response.msg);
+                    alert(response.msg);
+                }
+            },
+    });
+
+}
+
+///////////////////end/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -329,6 +415,44 @@ function showContent2(){
                         ln = response.imageN[i][0];
                         console.log(ln)
                         $('#images1_').append(image_sign2(ln, fn));
+                    }
+
+
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            },
+    });
+}
+
+
+function showContent3(){
+    document.getElementById("loader").style.display = "none";
+    $.ajax({
+        url: '/api/v1/user/data',
+        data: {'type': '3'},
+        type:"GET",
+        dataType: 'json',
+        crossDomain: true,
+            success: function(response) {
+                if(response.msg=='ok'){
+                    $('#profile1_').append(profiler(response.profimg, response.username));
+
+                    console.log(response.audioCount);
+                    console.log(response.imageCount);
+                    for (i = 0; i < response.audioCount; i++){
+                        fn = response.audioN[i][1];
+                        ln = response.audioN[i][0];
+                        console.log(ln);
+                        $('#audio1_').append(audio_sign(ln, fn));
+                    }
+
+                    for (i = 0; i < response.imageCount; i++){
+                        fn = response.imageN[i][1];
+                        ln = response.imageN[i][0];
+                        console.log(ln)
+                        $('#images1_').append(image_sign(ln, fn));
                     }
 
 
