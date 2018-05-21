@@ -61,47 +61,74 @@ class Anonymous(AnonymousUserMixin):
     def is_anonymous(self):
         return True
 
+class Type(db.Model):
+    __tablename__ = "type"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return '<id {}>'.format(self.id)
+
+    @staticmethod
+    def uploader_types():
+        uptype = ['local', 'gdrive', 'cloudinary']
+        for i in uptype:
+            ty = Type.query.filter_by(name=i).first()
+            if ty is None:
+                ty = Type(name=i)
+            db.session.add(ty)
+        db.session.commit()
+
 class Profile(db.Model):
     __tablename__ = "profile"
     id = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(500))
     status = db.Column(db.Integer)
+    typeID = db.Column(db.Integer, db.ForeignKey('type.id'))
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, link, userid):
+    def __init__(self, link, userid, typeID):
         self.link = link
         self.userid = userid
         self.status = 1
+        self.typeID = typeID
 
     def __repr__(self):
-        return '<userid {}>'.format(self.userid)
+        return '<id {}>'.format(self.id)
 
 class Images(db.Model):
     __tablename__ = "images"
     id = db.Column(db.Integer, primary_key= True)
     link = db.Column(db.String(500))
     name = db.Column(db.String(500))
+    typeID = db.Column(db.Integer, db.ForeignKey('type.id'))
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, link, userid, name):
+    def __init__(self, link, userid, name, typeID):
         self.link = link
         self.userid = userid
         self.name = name
+        self.typeID = typeID
 
     def __repr__(self):
-        return '<userid {}>'.format(self.userid)
+        return '<id {}>'.format(self.id)
 
 class Audio(db.Model):
     __tablename__ = "audio"
     id = db.Column(db.Integer, primary_key= True)
     link = db.Column(db.String(500))
     name = db.Column(db.String(500))
+    typeID = db.Column(db.Integer, db.ForeignKey('type.id'))
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, link, userid, name):
+    def __init__(self, link, userid, name, typeID):
         self.link = link
         self.userid = userid
         self.name = name
+        self.typeID = typeID
 
     def __repr__(self):
-        return '<userid {}>'.format(self.userid)
+        return '<id {}>'.format(self.id)

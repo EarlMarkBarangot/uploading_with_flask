@@ -1,9 +1,16 @@
 from werkzeug import secure_filename
 
-img_folder = 'app/static/js/uploads/img/'
-audio_folder = 'app/static/js/uploads/audio/'
-profile_folder = 'app/static/js/uploads/profile/'
+img_folder = 'app/static/uploads/img/'
+audio_folder = 'app/static/uploads/audio/'
+profile_folder = 'app/static/uploads/profile/'
+
+img_folder_alter = '/static/uploads/img/'
+audio_folder_alter = '/static/uploads/audio/'
+profile_folder_alter = '/static/uploads/profile/'
+
 app_dump = 'app/dumps'
+
+
 
 
 available_extension = set(['png', 'jpg', 'PNG', 'JPG'])

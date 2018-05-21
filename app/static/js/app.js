@@ -11,17 +11,20 @@ function showPage() {
     console.log('done')
 }
 
+function formCreate(nameVal, typeVal, filetype, fileVal){
+    var form = new FormData();
+    form.append('name', nameVal);
+    form.append('type', typeVal);
+    form.append(filetype, fileVal);
+    return form;
+}
+
 
 function uploadImage(){
-    myFunction();
-	var form = new FormData();
-    form.append('name', $('input[name="image"]').val());
-    form.append('image', $('input[name="pic_name"]')[0].files[0]);
-
     $.ajax({
     		type: 'POST',
-            url: '/api/upload/image',
-            data: form,
+            url: '/api/v1/upload/image',
+            data: formCreate($('input[name="image"]').val(), 'local', 'image', $('input[name="pic_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -41,15 +44,10 @@ function uploadImage(){
 }
 
 function uploadImage2(){
-    myFunction();
-    var form = new FormData();
-    form.append('name', $('input[name="image"]').val());
-    form.append('image', $('input[name="pic_name"]')[0].files[0]);
-
     $.ajax({
             type: 'POST',
-            url: '/api2/upload/image',
-            data: form,
+            url: '/api/v2/upload/image',
+            data: formCreate($('input[name="image"]').val(), 'gdrive', 'image', $('input[name="pic_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -69,15 +67,10 @@ function uploadImage2(){
 }
 
 function uploadAudio(){
-    myFunction();
-    var form = new FormData();
-    form.append('name', $('input[name="song"]').val());
-    form.append('song', $('input[name="audio_name"]')[0].files[0]);
-
     $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/upload/audio',
-            data: form,
+            url: '/api/v1/upload/audio',
+            data: formCreate($('input[name="song"]').val(), 'local', 'song', $('input[name="audio_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -97,15 +90,10 @@ function uploadAudio(){
 }
 
 function uploadAudio2(){
-    myFunction();
-    var form = new FormData();
-    form.append('name', $('input[name="song"]').val());
-    form.append('song', $('input[name="audio_name"]')[0].files[0]);
-
     $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api2/upload/audio',
-            data: form,
+            url: '/api/v2/upload/audio',
+            data: formCreate($('input[name="song"]').val(), 'gdrive', 'song', $('input[name="audio_name"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -125,14 +113,10 @@ function uploadAudio2(){
 }
 
 function uploadProfile(){
-    myFunction();
-    var form = new FormData();
-    form.append('avatar', $('input[name="avatar"]')[0].files[0]);
-
     $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/profilepic',
-            data: form,
+            url: '/api/v1/profilepic',
+            data: formCreate("0", 'local', 'avatar', $('input[name="avatar"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -152,14 +136,10 @@ function uploadProfile(){
 }
 
 function uploadProfile2(){
-    myFunction();
-    var form = new FormData();
-    form.append('avatar', $('input[name="avatar"]')[0].files[0]);
-
     $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api2/profilepic',
-            data: form,
+            url: '/api/v2/profilepic',
+            data: formCreate("0", 'gdrive', 'avatar', $('input[name="avatar"]')[0].files[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -184,7 +164,7 @@ function login(){
     var username = $('#username').val();
     var password = $('#password').val();
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/login',
+        url: '/api/v1/login',
         data: {'username': username, 'password': password},
         type:"GET",
         dataType: 'json',
@@ -210,7 +190,7 @@ function register(){
     var email = $('#email').val();
     console.log(username);
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/signup',
+        url: '/api/v1/signup',
         data: {'username': username, 'password': password, 'email': email},
         type:"POST",
         dataType: 'json',
@@ -233,7 +213,7 @@ function register(){
 
 function logout(){
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/logout',
+        url: '/api/v1/logout',
         data: {'exit_code': '0'},
         type:"POST",
         dataType: 'json',
@@ -289,8 +269,8 @@ function audio_sign2(prof, name){
 function showContent(){
     document.getElementById("loader").style.display = "none";
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/user/data',
-        data: {'exit_code': '0'},
+        url: '/api/v1/user/data',
+        data: {'type': '1'},
         type:"GET",
         dataType: 'json',
         crossDomain: true,
@@ -326,8 +306,8 @@ function showContent(){
 function showContent2(){
     document.getElementById("loader").style.display = "none";
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/user/data',
-        data: {'exit_code': '0'},
+        url: '/api/v1/user/data',
+        data: {'type': '2'},
         type:"GET",
         dataType: 'json',
         crossDomain: true,

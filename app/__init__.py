@@ -14,6 +14,8 @@ app.config['SECRET_KEY'] = app_secret_key
 import models
 db.create_all()
 
-from app import views, api
+models.Type.uploader_types()
+
+from app import views, api, api2
 
 app.debug = True
